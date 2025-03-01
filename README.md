@@ -32,28 +32,8 @@ Animación: Canvas/WebGL (si aplica)
 
 Interactividad: Librerías para manejo de eventos y animaciones
 
-📦 Instalación
 
-git clone https://github.com/tuusuario/transmutador-emocional.git
-cd transmutador-emocional
-npm install
-npm start
-
-🛠️ Cómo Contribuir
-
-¡Las contribuciones son bienvenidas! Si deseas colaborar, sigue estos pasos:
-
-Haz un fork del repositorio
-
-Crea una rama con tu función (git checkout -b feature/nueva-funcionalidad)
-
-Haz commit de tus cambios (git commit -m 'Agrega nueva funcionalidad')
-
-Haz push a la rama (git push origin feature/nueva-funcionalidad)
-
-Abre un Pull Request
-
-📄 Licencia
+📄 Licencia Rafael Ricardo Romero Medina 
 
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 
