@@ -2,14 +2,17 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libera tus pensamientos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">,
+    <title>Transmutador de pensamientos</title>
     <style>
         :root {
             --flame-primary: #FFB338;
             --flame-secondary: #FF7F00;
             --flame-tertiary: #FF4500;
             --message-color: #f8f8f8;
+            --wood-primary: #8B4513;
+            --wood-secondary: #A0522D;
+            --wood-tertiary: #6B3212;
         }
 
         body {
@@ -85,9 +88,7 @@
         }
 
         /* Modificación área de la fogata */
-        .fire-container {
-            margin-top: 1rem;
-        }
+        
 
         /* Luna */
         .moon {
@@ -120,6 +121,7 @@
         }
 
         .header h1 {
+            
             font-size: 1.5rem;
             color: var(--flame-primary);
             margin-bottom: 0.5rem;
@@ -185,7 +187,7 @@
             width: 300px;
             height: 240px;
             position: relative;
-            margin-bottom: 1rem;
+            
         }
 
         .forest-bg {
@@ -197,51 +199,182 @@
             opacity: 0.3;
         }
 
-        .logs {
+        /* Nuevas clases para la hoguera mejorada */
+        .firepit {
             position: absolute;
             bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             width: 160px;
             height: 60px;
+            z-index: 1;
+        }
+
+        .rocks {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .rock {
+            background-color: #555;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .rock:nth-child(1) {
+            width: 30px;
+            height: 18px;
+            left: -10px;
+        }
+
+        .rock:nth-child(2) {
+            width: 24px;
+            height: 16px;
+            left: -5px;
+        }
+
+        .rock:nth-child(3) {
+            width: 35px;
+            height: 20px;
+        }
+
+        .rock:nth-child(4) {
+            width: 28px;
+            height: 15px;
+            right: -5px;
+        }
+
+        .rock:nth-child(5) {
+            width: 32px;
+            height: 17px;
+            right: -10px;
+        }
+
+        .logs {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 60px;
             z-index: 2;
         }
 
         .log {
             position: absolute;
-            height: 4px;
-            background: #8B4513;
-            opacity: 0.8;
+            background: linear-gradient(90deg, var(--wood-tertiary), var(--wood-primary), var(--wood-secondary), var(--wood-primary), var(--wood-tertiary));
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
             transform-origin: center;
-            border-radius: 2px;
+        }
+
+        .log:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 20%),
+                linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.1) 20%, transparent 40%, rgba(0, 0, 0, 0.1) 60%, transparent 80%, rgba(0, 0, 0, 0.1) 100%);
+            border-radius: 6px;
+        }
+
+        .log-end {
+            position: absolute;
+            width: 12px;
+            height: 100%;
+            background: radial-gradient(ellipse, var(--wood-secondary) 30%, var(--wood-tertiary) 70%);
+            border-radius: 6px;
         }
 
         .log:nth-child(1) {
-            width: 140px;
-            bottom: 0;
-            left: 10px;
-            transform: rotate(-20deg);
+            width: 110px;
+            height: 16px;
+            bottom: 5px;
+            left: 5px;
+            transform: rotate(-16deg);
+        }
+
+        .log:nth-child(1) .log-end-left {
+            left: -6px;
+            transform: rotate(16deg);
+        }
+
+        .log:nth-child(1) .log-end-right {
+            right: -6px;
+            transform: rotate(16deg);
         }
 
         .log:nth-child(2) {
-            width: 140px;
-            bottom: 0;
-            left: 10px;
-            transform: rotate(20deg);
+            width: 110px;
+            height: 16px;
+            bottom: 5px;
+            left: 5px;
+            transform: rotate(16deg);
+        }
+
+        .log:nth-child(2) .log-end-left {
+            left: -6px;
+            transform: rotate(-16deg);
+        }
+
+        .log:nth-child(2) .log-end-right {
+            right: -6px;
+            transform: rotate(-16deg);
         }
 
         .log:nth-child(3) {
-            width: 120px;
-            bottom: 20px;
-            left: 20px;
+            width: 100px;
+            height: 14px;
+            bottom: 25px;
+            left: 10px;
             transform: rotate(-8deg);
         }
 
-        .log:nth-child(4) {
-            width: 110px;
-            bottom: 25px;
-            left: 25px;
+        .log:nth-child(3) .log-end-left {
+            left: -6px;
             transform: rotate(8deg);
+        }
+
+        .log:nth-child(3) .log-end-right {
+            right: -6px;
+            transform: rotate(8deg);
+        }
+
+        .log:nth-child(4) {
+            width: 100px;
+            height: 14px;
+            bottom: 25px;
+            left: 10px;
+            transform: rotate(8deg);
+        }
+
+        .log:nth-child(4) .log-end-left {
+            left: -6px;
+            transform: rotate(-8deg);
+        }
+
+        .log:nth-child(4) .log-end-right {
+            right: -6px;
+            transform: rotate(-8deg);
+        }
+
+        .log-knot {
+            position: absolute;
+            width: 6px;
+            height: 4px;
+            background: var(--wood-tertiary);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .fire {
@@ -526,7 +659,7 @@
             }
             
             .fire-container {
-                height: 220px;
+                height: 200px;
             }
         }
 
@@ -541,12 +674,12 @@
 <body>
     <div class="app-container">
         <div class="header">
-            <h1>Libera tus pensamientos</h1>
+            <h1> Qué quieres soltar hoy </h1> <br>
             <p>Escribe ese mal pensamiento o emoción para que el fuego lo transmute y te libere</p>
         </div>
 
         <div class="note-card">
-            <label for="thought-input" class="note-label">¿Qué quieres soltar hoy?</label>
+            
             <textarea 
                 id="thought-input"
                 class="note-input" 
@@ -556,16 +689,46 @@
         </div>
 
         <div class="final-message">
-            Suelta. Deja que el universo se encargue.
+            Qué valiente fue soltar eso.  
+            Confía, el universo se encargará del resto.
+
         </div>
 
         <div class="fire-container">
             <div class="forest-bg"></div>
-            <div class="logs">
-                <div class="log"></div>
-                <div class="log"></div>
-                <div class="log"></div>
-                <div class="log"></div>
+            <div class="firepit">
+                <div class="rocks">
+                    <div class="rock"></div>
+                    <div class="rock"></div>
+                    <div class="rock"></div>
+                    <div class="rock"></div>
+                    <div class="rock"></div>
+                </div>
+                <div class="logs">
+                    <div class="log">
+                        <div class="log-end log-end-left"></div>
+                        <div class="log-end log-end-right"></div>
+                        <div class="log-knot" style="left: 30%;"></div>
+                        <div class="log-knot" style="left: 70%;"></div>
+                    </div>
+                    <div class="log">
+                        <div class="log-end log-end-left"></div>
+                        <div class="log-end log-end-right"></div>
+                        <div class="log-knot" style="left: 25%;"></div>
+                        <div class="log-knot" style="left: 60%;"></div>
+                    </div>
+                    <div class="log">
+                        <div class="log-end log-end-left"></div>
+                        <div class="log-end log-end-right"></div>
+                        <div class="log-knot" style="left: 40%;"></div>
+                    </div>
+                    <div class="log">
+                        <div class="log-end log-end-left"></div>
+                        <div class="log-end log-end-right"></div>
+                        <div class="log-knot" style="left: 35%;"></div>
+                        <div class="log-knot" style="left: 75%;"></div>
+                    </div>
+                </div>
             </div>
             <div class="burning-text"></div>
             <div class="fire">
@@ -589,8 +752,8 @@
         </div>
 
         <div class="controls">
-            <button id="burn-button" class="action-button primary" disabled>Quemar</button>
-            <button id="reset-button" class="action-button" style="display: none;">Nuevo</button>
+            <button id="burn-button" class="action-button primary" >Transmutar</button>
+            <button id="reset-button" class="action-button" style="display: none;">Nuevo Mensaje</button>
         </div>
     </div>
 
